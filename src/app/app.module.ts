@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { CheckboxListComponent } from './components/checkbox-list/checkbox-list.component';
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [AppComponent, CheckboxListComponent],
   imports: [BrowserModule, FormsModule],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

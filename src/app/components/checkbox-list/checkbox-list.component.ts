@@ -17,6 +17,7 @@ export class CheckboxListComponent extends BaseValueAccessor<number[]> {
     protected control: NgControl
   ) {
     super();
+
     this.setValueAcessor();
   }
 
@@ -25,5 +26,17 @@ export class CheckboxListComponent extends BaseValueAccessor<number[]> {
       return false;
     }
     return this.value.indexOf(id) > -1;
+  }
+
+  change(id: number): void {
+    const copy = [...this.value];
+
+    if (this.isChecked(id)) {
+      copy.splice(copy.indexOf(id), 1);
+    } else {
+      copy.push(id);
+    }
+
+    this.value = copy;
   }
 }

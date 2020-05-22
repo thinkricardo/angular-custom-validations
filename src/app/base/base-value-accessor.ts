@@ -21,7 +21,7 @@ export abstract class BaseValueAccessor<T> implements ControlValueAccessor {
   set value(newValue: T) {
     if (this.currentValue !== newValue) {
       this.currentValue = newValue;
-      //this.onChange(this.currentValue);
+      this.onChange(this.currentValue);
     }
   }
 
