@@ -1,7 +1,16 @@
-<form>
+<form #f="ngForm">
   <app-checkbox-list
     name="colors"
     [(ngModel)]="colorsSelected"
     [items]="colorsList"
-  ></app-checkbox-list>
+  >
+  </app-checkbox-list>
 </form>
+
+<pre>
+  <h3>Debugging</h3>
+  <code>Form value: {{ f.value | json }}</code>
+  <code>Form is dirty: {{ f.dirty | json }}</code>
+  <code>Form is touched: {{ f.dirty | json }}</code>
+  <code>Selected colors: {{ colorsSelected | json }}</code>
+</pre>

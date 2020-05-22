@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", "Segoe UI",
+    Tahoma, Geneva, Verdana, sans-serif;
+}
+
+pre {
+  padding: 1rem;
+  margin-top: 10px;
+
+  background-color: #efefef;
+
+  h3 {
+    margin: 0;
+  }
+
+  > code {
+    display: block;
+  }
+}
