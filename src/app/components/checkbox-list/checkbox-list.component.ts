@@ -6,7 +6,6 @@ import { BaseValueAccessor } from '../../base/base-value-accessor';
 @Component({
   selector: 'app-checkbox-list',
   templateUrl: './checkbox-list.component.html',
-  styleUrls: ['./checkbox-list.component.scss'],
 })
 export class CheckboxListComponent extends BaseValueAccessor<number[]> {
   @Input()
