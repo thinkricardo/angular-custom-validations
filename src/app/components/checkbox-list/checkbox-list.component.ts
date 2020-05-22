@@ -1,15 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Self, Optional } from '@angular/core';
+import { NgControl } from '@angular/forms';
+
+import { BaseValueAccessor } from '../../base/base-value-accessor';
 
 @Component({
   selector: 'app-checkbox-list',
   templateUrl: './checkbox-list.component.html',
   styleUrls: ['./checkbox-list.component.scss'],
 })
-export class CheckboxListComponent implements OnInit {
+export class CheckboxListComponent extends BaseValueAccessor<number[]> {
   @Input()
   items: any[];
 
-  constructor() {}
+  constructor(
+    @Self()
+    @Optional()
+    protected control: NgControl
+  ) {
+    super();
+    this.setValueAcessor();
+  }
 
-  ngOnInit(): void {}
+  isChecked(id: number): boolean {
+    if (!this.value) {
+      return false;
+    }
+    return this.value.indexOf(id) > -1;
+  }
 }

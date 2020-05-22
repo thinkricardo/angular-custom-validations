@@ -1,1 +1,7 @@
-<app-checkbox-list [items]="colorsList"></app-checkbox-list>
+<form>
+  <app-checkbox-list
+    name="colors"
+    [(ngModel)]="colorsSelected"
+    [items]="colorsList"
+  ></app-checkbox-list>
+</form>

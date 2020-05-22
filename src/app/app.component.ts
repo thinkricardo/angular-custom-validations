@@ -15,4 +15,6 @@ export class AppComponent {
     { id: 6, name: 'Pink' },
     { id: 7, name: 'Red' },
   ];
+
+  colorsSelected: number[] = [4, 7];
 }

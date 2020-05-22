@@ -1,19 +1,45 @@
-import { ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
-export abstract class BaseValueAccessor implements ControlValueAccessor {
-  writeValue(obj: any): void {
-    throw new Error('Method not implemented.');
+export abstract class BaseValueAccessor<T> implements ControlValueAccessor {
+  protected abstract control: NgControl;
+
+  private currentValue: T;
+  private isDisabled = false;
+
+  onChange = (value: T) => {};
+  onTouched = () => {};
+
+  setValueAcessor() {
+    if (this.control) {
+      this.control.valueAccessor = this;
+    }
   }
 
-  registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
+  get value(): T {
+    return this.currentValue;
+  }
+  set value(newValue: T) {
+    if (this.currentValue !== newValue) {
+      this.currentValue = newValue;
+      //this.onChange(this.currentValue);
+    }
   }
 
-  registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
+  writeValue(newValue: T): void {
+    this.currentValue = newValue;
+  }
+
+  registerOnChange(fn: (value: T) => {}): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: () => {}): void {
+    this.onTouched = fn;
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+    if (this.isDisabled !== isDisabled) {
+      this.isDisabled = isDisabled;
+    }
   }
 }
